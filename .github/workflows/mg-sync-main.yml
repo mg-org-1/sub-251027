@@ -1,4 +1,4 @@
-name: 同步ComfyUI自定义节点
+name: 同步mg主库
 
 on:
   schedule:
