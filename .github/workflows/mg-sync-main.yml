@@ -53,11 +53,9 @@ jobs:
           LOCAL_WORKFLOWS_EXIST=0
           [ -d ".github/workflows" ] && { cp -r .github/workflows /tmp/workflows.backup; LOCAL_WORKFLOWS_EXIST=1; }
           
-          # === 在合并前清理 .gitattributes 中的 LFS 规则 ===
-          # 创建一个干净的 .gitattributes（无 LFS）
+          # === 清理 .gitattributes 中的 LFS 规则 ===
           if [ -f ".gitattributes" ]; then
             cp .gitattributes /tmp/gitattributes.backup
-            # 移除所有包含 filter=lfs 的行
             grep -v 'filter=lfs' /tmp/gitattributes.backup > .gitattributes.new
             mv .gitattributes.new .gitattributes
             git add .gitattributes
@@ -70,7 +68,7 @@ jobs:
             git add .
           fi
           
-          # === 恢复本地文件（覆盖上游版本）===
+          # === 恢复本地文件 ===
           if [ "$LOCAL_README_EXIST" = "1" ]; then
             cp /tmp/README.md.backup README.md
             git add README.md
@@ -88,13 +86,14 @@ jobs:
             git add -A
           fi
           
-          # === 强制重新添加所有文件为普通文件（非 LFS）===
-          # 因为我们已经清理了 .gitattributes，所以 git add 不会触发 LFS
           git add -A
           
-          # === 提交 & 推送 ===
           if ! git diff --cached --quiet; then
             git commit -m "Sync with upstream/master and restore local files (README.md, .github/workflows)"
+            
+            # === 关键修复：禁用 LFS 推送行为 ===
+            git config lfs.disable true
+            
             git push origin master
           else
             echo "No changes to commit."
