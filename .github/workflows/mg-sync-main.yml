@@ -29,7 +29,7 @@ jobs:
       - name: Run sync script
         run: |
           # === 1. 彻底“阉割” LFS 功能 ===
-          # 这一步是解决报错的关键：移除所有 LFS 相关的过滤器和钩子
+          # 移除所有 LFS 相关的过滤器和钩子
           # 这样 Git 就会把 LFS 文件当成普通文本（指针）处理，而不会尝试上传到 LFS 服务器
           git config --global --unset-all filter.lfs.required || true
           git config --global --unset-all filter.lfs.smudge || true
@@ -39,7 +39,7 @@ jobs:
           # 允许推送“不完整”的 LFS（即只推指针，不推实体文件）
           git config --global lfs.allowincompletepush true
           
-          # 移除可能存在的 pre-push 钩子（这是触发报错的元凶）
+          # 移除可能存在的 pre-push 钩子
           rm -f .git/hooks/pre-push
 
           # === 2. 准备上游 ===
@@ -93,8 +93,7 @@ jobs:
           # === 7. 提交并推送 ===
           if ! git diff --cached --quiet; then
             git commit -m "Sync with upstream/master and restore local files"
-            
-            # 关键修改：使用 --no-verify 跳过所有钩子检查
+            # 使用 --no-verify 跳过所有钩子检查
             git push origin master --no-verify
           else
             echo "No changes to commit."
