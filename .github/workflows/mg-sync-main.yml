@@ -36,7 +36,10 @@ jobs:
 
       # 执行同步脚本
       - name: Run sync script
-        run: |            
+        run: |
+          # 设置环境变量跳过 LFS 下载
+          export GIT_LFS_SKIP_SMUDGE=1
+          
           git remote add upstream https://github.com/mg-org-1/ComfyUI.git 2>/dev/null || true
           git fetch upstream
           git checkout master
@@ -81,22 +84,16 @@ jobs:
             echo "Restored local .github/workflows"
           fi
 
-          if [ -f ".gitattributes" ]; then
-            # 提取所有 LFS 跟踪的文件模式
-            git lfs ls-files 2>/dev/null | awk '{print $3}' | while read file; do
-              if [ -e "$file" ]; then
-                echo "Removing LFS-tracked file: $file"
-                rm -f "$file"
-                git add -u "$file"  # 记录删除
-              fi
-            done
-          fi
-          
           # 清理空的 .github 目录
           if [ -d ".github" ] && [ -z "$(ls -A .github)" ]; then
             rmdir .github
             git add -A
           fi
+
+          git lfs untrack "*"
+          git rm -r --cached .
+          git add -A
+
           # === 统一提交 ===
           # 检查暂存区是否有任何更改。
           # 如果上游没有新内容，且本地文件也无变化，则暂存区是空的
