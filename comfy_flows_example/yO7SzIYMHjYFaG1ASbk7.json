@@ -2,7 +2,7 @@
   "id": "ad18abd3-bdee-4f80-8fae-d15d4f845b9d",
   "revision": 0,
   "last_node_id": 141,
-  "last_link_id": 902,
+  "last_link_id": 942,
   "nodes": [
     {
       "id": 70,
@@ -36,7 +36,6 @@
           ]
         }
       ],
-      "title": "Edit Model Reference Method",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.5.1",
@@ -171,7 +170,6 @@
           ]
         }
       ],
-      "title": "Edit Model Reference Method",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.5.1",
@@ -261,13 +259,13 @@
         },
         {
           "on": true,
-          "lora": "qwen\\Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+          "lora": "qwen\\Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors",
           "strength": 1,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "qwen\\rch2_002.safetensors",
+          "lora": "qwen\\2511-replace-character-rch2_004.safetensors",
           "strength": 1,
           "strengthTwo": null
         },
@@ -446,9 +444,9 @@
         }
       },
       "widgets_values": [
-        562013895861062,
-        "randomize",
-        4,
+        744915084196525,
+        "fixed",
+        8,
         1,
         "euler",
         "simple",
@@ -739,7 +737,7 @@
         }
       },
       "widgets_values": [
-        "example.png",
+        "4.webp",
         "image"
       ]
     },
@@ -804,11 +802,12 @@
       "properties": {
         "cnr_id": "comfyui-rmbg",
         "ver": "7178f940fb74407e6be329765fb1ed469650c5d7",
+        "Node name for S&R": "AILab_ImageResize",
         "ue_properties": {
           "widget_ue_connectable": {},
-          "input_ue_unconnectable": {}
-        },
-        "Node name for S&R": "AILab_ImageResize"
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        }
       },
       "widgets_values": [
         1328,
@@ -885,11 +884,12 @@
       "properties": {
         "cnr_id": "comfyui-rmbg",
         "ver": "7178f940fb74407e6be329765fb1ed469650c5d7",
+        "Node name for S&R": "AILab_ImageResize",
         "ue_properties": {
           "widget_ue_connectable": {},
-          "input_ue_unconnectable": {}
-        },
-        "Node name for S&R": "AILab_ImageResize"
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        }
       },
       "widgets_values": [
         1328,
@@ -950,7 +950,7 @@
         }
       },
       "widgets_values": [
-        "example.png",
+        "1.png",
         "image"
       ]
     },
@@ -1041,19 +1041,20 @@
       "properties": {
         "cnr_id": "comfyui_layerstyle",
         "ver": "5840264d0d7cb47185acfed28c02848e94c6a894",
+        "Node name for S&R": "LayerUtility: CropByMask",
         "ue_properties": {
           "widget_ue_connectable": {},
-          "input_ue_unconnectable": {}
-        },
-        "Node name for S&R": "LayerUtility: CropByMask"
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        }
       },
       "widgets_values": [
         true,
         "mask_area",
         0,
         0,
-        -8,
-        -8
+        0,
+        0
       ],
       "color": "rgba(38, 73, 116, 0.7)"
     },
@@ -1168,38 +1169,6 @@
       ]
     },
     {
-      "id": 82,
-      "type": "MarkdownNote",
-      "pos": [
-        -1597.4085346951056,
-        -267.4156575832249
-      ],
-      "size": [
-        396.80405326696564,
-        566.88056286198
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 8,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "title": "Model Links",
-      "properties": {
-        "ue_properties": {
-          "widget_ue_connectable": {},
-          "version": "7.5.2",
-          "input_ue_unconnectable": {}
-        }
-      },
-      "widgets_values": [
-        "## Report Issue\n\nNote: please [update ComfyUI](https://docs.comfy.org/zh-CN/installation/update_comfyui) first and prepare required models. Desktop/Cloud ship stable builds; nightly-supported models may not be included yet, please wait for the next stable release.\n\n- Cannot run / runtime errors: [ComfyUI/issues](https://github.com/comfyanonymous/ComfyUI/issues)\n- UI / frontend issues: [ComfyUI_frontend/issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)\n- Workflow issues: [workflow_templates/issues](https://github.com/Comfy-Org/workflow_templates/issues)\n\n\n## Model Links\n\n**diffusion_models**\n- [Qwen-Image-Edit-2511-GGUF](https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF)\n\n**loras**\n- [Qwen-Image-Edit-2511-Lightning](https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning)\n\n**text_encoders**\n- [Qwen2.5-VL-7B-Instruct-GGUF](https://huggingface.co/unsloth/Qwen2.5-VL-7B-Instruct-GGUF)\n- [Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf](https://huggingface.co/QuantStack/Qwen-Image-Edit-GGUF/resolve/main/mmproj/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf)\n\n**vae**\n- [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors)\n\n\nModel Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 diffusion_models/\n│   │      └── qwen-image-edit-2511-Q4_K_M.gguf\n│   ├── 📂 loras/\n│   │      └── Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors\n│   ├── 📂 text_encoders/\n│   │      └── Qwen2.5-VL-7B-Instruct-Q8_0.gguf\n│   │      └── Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf\n│   └── 📂 vae/\n│          └── qwen_image_vae.safetensors\n```\n"
-      ],
-      "color": "#222",
-      "bgcolor": "#000"
-    },
-    {
       "id": 98,
       "type": "Image Comparer (rgthree)",
       "pos": [
@@ -1245,12 +1214,12 @@
           {
             "name": "A",
             "selected": true,
-            "url": "/api/view?filename=rgthree.compare._temp_rxqbp_00027_.png&type=temp&subfolder=&rand=0.08888845141649293"
+            "url": "/api/view?filename=rgthree.compare._temp_exdpx_00013_.png&type=temp&subfolder=&rand=0.5529819180896235"
           },
           {
             "name": "B",
             "selected": true,
-            "url": "/api/view?filename=rgthree.compare._temp_rxqbp_00028_.png&type=temp&subfolder=&rand=0.21931564541138815"
+            "url": "/api/view?filename=rgthree.compare._temp_exdpx_00014_.png&type=temp&subfolder=&rand=0.30273365754876735"
           }
         ]
       ]
@@ -1334,6 +1303,38 @@
       ],
       "color": "#232",
       "bgcolor": "#353"
+    },
+    {
+      "id": 82,
+      "type": "MarkdownNote",
+      "pos": [
+        -1597.4085346951056,
+        -267.4156575832249
+      ],
+      "size": [
+        396.80405326696564,
+        566.88056286198
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Model Links",
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.5.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "## Report Issue\n\nNote: please [update ComfyUI](https://docs.comfy.org/zh-CN/installation/update_comfyui) first and prepare required models. Desktop/Cloud ship stable builds; nightly-supported models may not be included yet, please wait for the next stable release.\n\n- Cannot run / runtime errors: [ComfyUI/issues](https://github.com/comfyanonymous/ComfyUI/issues)\n- UI / frontend issues: [ComfyUI_frontend/issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)\n- Workflow issues: [workflow_templates/issues](https://github.com/Comfy-Org/workflow_templates/issues)\n\n\n## Model Links\n\n**diffusion_models**\n- [qwen-image-edit-2511-Q4_K_M.gguf](https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF)\n\n**loras**\n- [Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning)\n- [2511-replace-character-rch2_004.safetensors](https://huggingface.co/nappa114514/Qwen-Image-Edit-2511-monochrome-charachange)\n\n**text_encoders**\n- [Qwen2.5-VL-7B-Instruct-Q8_0.gguf](https://huggingface.co/unsloth/Qwen2.5-VL-7B-Instruct-GGUF)\n- [Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf](https://huggingface.co/QuantStack/Qwen-Image-Edit-GGUF/resolve/main/mmproj/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf)\n\n**vae**\n- [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors)\n\n\nModel Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 diffusion_models/\n│   │      └── qwen-image-edit-2511-Q4_K_M.gguf\n│   ├── 📂 loras/\n│   │      └── Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors\n│   │      └── 2511-replace-character-rch2_004.safetensors\n│   ├── 📂 text_encoders/\n│   │      └── Qwen2.5-VL-7B-Instruct-Q8_0.gguf\n│   │      └── Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf\n│   └── 📂 vae/\n│          └── qwen_image_vae.safetensors\n```\n"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
     }
   ],
   "links": [
@@ -1542,13 +1543,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.35584102738367945,
+      "scale": 0.5730855330116922,
       "offset": [
-        2221.2693475442475,
-        1848.2267194570056
+        929.0730424820907,
+        1424.6006502483217
       ]
     },
-    "frontendVersion": "1.35.9",
+    "frontendVersion": "1.36.13",
     "workflowRendererVersion": "LG",
     "groupNodes": {},
     "VHS_latentpreview": false,
@@ -1622,14 +1623,14 @@
       }
     ],
     "links_added_by_ue": [
-      895,
-      896,
-      897,
-      898,
-      899,
-      900,
-      901,
-      902
+      935,
+      936,
+      937,
+      938,
+      939,
+      940,
+      941,
+      942
     ]
   },
   "version": 0.4
